@@ -1,0 +1,61 @@
+##SRMS-5813
+
+***************
+* Router M_R1 *
+***************
+
+enable
+config t
+
+int tunnel 1
+ip add 10.10.0.1 255.255.255.252
+tunnel source s0/1/0
+tunnel destination 89.13.25.110
+exit
+
+int tunnel 2
+ip add 10.10.0.5 255.255.255.252
+tunnel source s0/1/0
+tunnel destination 89.13.25.122
+
+do wr
+
+
+****************
+* Router S1_R1 *
+****************
+
+enable
+config t
+
+int tunnel 1
+ip add 10.10.0.2 255.255.255.252
+tunnel source s0/1/0
+tunnel destination 89.13.25.81
+
+int tunnel 3
+ip add 10.10.0.9 255.255.255.252
+tunnel source s0/1/0
+tunnel destination 89.13.25.122
+
+do wr
+
+
+****************
+* Router S2_R1 *
+****************
+
+enable
+config t
+
+int tunnel 2
+ip add 10.10.0.6 255.255.255.252
+tunnel source s0/1/0
+tunnel destination 89.13.25.81
+
+int tunnel 3
+ip add 10.10.0.10 255.255.255.252
+tunnel source s0/1/0
+tunnel destination 89.13.25.110
+
+do wr

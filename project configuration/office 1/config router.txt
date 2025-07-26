@@ -1,0 +1,43 @@
+*************************
+* Router 1 - Sucursal 1 *
+*************************
+
+enable
+config t
+
+hostname Ope_R1
+
+banner motd $
+---------------------------------------
+NO INGRESE SIN AUTORIZACION
+---------------------------------------
+$
+
+enable secret SRMS-5813
+
+service password-encryption
+
+
+int g0/0/1.110
+encap dot1q 110
+ip add 192.168.20.1 255.255.255.128
+ip helper-address 192.168.10.178
+
+int g0/0/1.120
+encap dot1q 120
+ip add 192.168.20.129 255.255.255.192
+ip helper-address 192.168.10.178
+
+int g0/0/1.130
+encap dot1q 130
+ip add 192.168.20.193 255.255.255.192
+ip helper-address 192.168.10.178
+
+int g0/0/1.666
+encap dot1q 666 native
+
+int g0/0/1
+no shut
+exit
+
+do wr

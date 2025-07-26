@@ -1,0 +1,47 @@
+*************************
+* Switch 1 - Sucursal 1 *
+*************************
+
+enable
+config t
+
+hostname Ope_S1
+
+banner motd $
+---------------------------------------
+NO INGRESE SIN AUTORIZACION
+---------------------------------------
+$
+
+enable secret SRMS-5813
+
+service password-encryption
+
+vlan 110
+name QA_TESTING
+
+vlan 120
+name DEVOPS
+
+vlan 130
+name UI_UX_DESIGN
+exit
+
+int range f0/6 -12
+switchport mode access
+switchport access vlan 110
+
+int range f0/13 -18
+switchport mode access
+switchport access vlan 120
+
+int range f0/19 -24
+switchport mode access
+switchport access vlan 130
+
+int g0/1
+switchport mode trunk
+switchport trunk native vlan 666
+exit
+
+do wr

@@ -1,0 +1,168 @@
+##SRMS-5813
+
+***************
+* Router M_R1 *
+***************
+
+enable
+config t
+
+router ospf 1
+router-id 1.1.1.1
+network 89.13.25.80 0.0.0.3 area 0
+network 89.13.25.148 0.0.0.3 area 0
+passive-int g0/0/1
+
+do wr
+
+
+****************
+* Router S1_R1 *
+****************
+
+enable
+config t
+
+router ospf 2
+router-id 2.2.2.2
+network 89.13.25.108 0.0.0.3 area 0
+passive-int g0/0/1
+
+do wr
+
+
+****************
+* Router S2_R1 *
+****************
+
+enable
+config t
+
+router ospf 3
+router-id 3.3.3.3
+network 89.13.25.120 0.0.0.3 area 0
+passive-int g0/0/1
+
+do wr
+
+
+**************
+* Router IR1 *
+**************
+
+enable
+config t
+
+router ospf 11
+router-id 11.11.11.11
+network 89.13.25.80 0.0.0.3 area 0 
+network 89.13.25.84 0.0.0.3 area 0
+network 89.13.25.88 0.0.0.3 area 0
+network 89.13.25.136 0.0.0.3 area 0
+network 89.13.25.140 0.0.0.3 area 0
+
+do wr
+
+
+**************
+* Router IR2 *
+**************
+
+enable
+config t
+
+router ospf 22
+router-id 22.22.22.22
+network 89.13.25.84 0.0.0.3 area 0
+network 89.13.25.92 0.0.0.3 area 0
+network 89.13.25.96 0.0.0.3 area 0
+network 89.13.25.144 0.0.0.3 area 0
+
+do wr
+
+**************
+* Router IR3 *
+**************
+
+enable
+config t
+
+router ospf 33
+router-id 33.33.33.33
+network 89.13.25.88 0.0.0.3 area 0
+network 89.13.25.92 0.0.0.3 area 0
+network 89.13.25.100 0.0.0.3 area 0
+network 89.13.25.104 0.0.0.3 area 0
+
+do wr
+
+
+**************
+* Router IR4 *
+**************
+
+enable
+config t
+
+router ospf 44
+router-id 44.44.44.44
+network 89.13.25.96 0.0.0.3 area 0
+network 89.13.25.100 0.0.0.3 area 0
+network 89.13.25.108 0.0.0.3 area 0
+network 89.13.25.112 0.0.0.3 area 0
+network 89.13.25.116 0.0.0.3 area 0
+
+do wr
+
+
+**************
+* Router IR5 *
+**************
+
+enable
+config t
+
+router ospf 55
+router-id 55.55.55.55
+network 89.13.25.104 0.0.0.3 area 0
+network 89.13.25.112 0.0.0.3 area 0
+network 89.13.25.120 0.0.0.3 area 0
+network 89.13.25.124 0.0.0.3 area 0
+network 89.13.25.128 0.0.0.3 area 0
+
+do wr
+
+
+**************
+* Router IR6 *
+**************
+
+enable
+config t
+
+router ospf 66
+router-id 66.66.66.66
+network 89.13.25.116 0.0.0.3 area 0
+network 89.13.25.124 0.0.0.3 area 0
+network 89.13.25.132 0.0.0.3 area 0
+network 89.13.25.136 0.0.0.3 area 0
+
+do wr
+
+
+**************
+* Router IR7 *
+**************
+
+enable
+config t
+
+router ospf 77
+router-id 77.77.77.77
+network 89.13.25.128 0.0.0.3 area 0
+network 89.13.25.132 0.0.0.3 area 0
+network 89.13.25.140 0.0.0.3 area 0
+network 89.13.25.144 0.0.0.3 area 0
+network 89.13.25.148 0.0.0.3 area 0
+
+do wr

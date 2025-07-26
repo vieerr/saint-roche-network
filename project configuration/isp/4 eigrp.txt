@@ -1,0 +1,79 @@
+***************
+* Router M_R1 *
+***************
+
+enable
+config t
+
+router eigrp 1
+no auto-summary
+eigrp router-id 1.1.1.1
+network 10.10.0.0 0.0.0.3
+network 10.10.0.4 0.0.0.3
+network 192.168.10.176 0.0.0.3
+exit
+
+do wr
+
+
+***************
+* Switch ML1 *
+***************
+enable
+config t
+
+router eigrp 1
+no auto-summary
+eigrp router-id 1.1.1.2
+network 192.168.10.176 0.0.0.3
+network 192.168.10.64 0.0.0.31
+network 192.168.10.96 0.0.0.31
+network 192.168.10.0 0.0.0.63
+network 192.168.10.128 0.0.0.31
+network 192.168.10.160 0.0.0.15
+network 192.168.90.0 0.0.0.63
+exit
+
+do wr
+
+
+****************
+* Router S1_R1 *
+****************
+
+enable
+config t
+
+router eigrp 1
+no auto-summary
+eigrp router-id 2.2.2.2
+network 10.10.0.0 0.0.0.3
+network 10.10.0.8 0.0.0.3
+network 192.168.20.0 0.0.0.127
+network 192.168.20.128 0.0.0.63
+network 192.168.20.192 0.0.0.63
+network 192.168.90.64 0.0.0.63
+exit
+
+do wr
+
+
+****************
+* Router S2_R1 *
+****************
+
+enable
+config t
+
+router eigrp 1
+no auto-summary
+eigrp router-id 3.3.3.3
+network 10.10.0.4 0.0.0.3
+network 10.10.0.8 0.0.0.3
+network 192.168.30.0 0.0.0.127
+network 192.168.30.128 0.0.0.127
+network 192.168.31.0 0.0.0.63
+network 192.168.90.128 0.0.0.63
+exit
+
+do wr

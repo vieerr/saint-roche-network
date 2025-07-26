@@ -1,0 +1,208 @@
+***********************
+* Switch 1_1 - Matriz *
+***********************
+
+enable
+config t
+
+hostname Mat_S1_1
+
+banner motd $
+---------------------------------------
+NO INGRESE SIN AUTORIZACION
+---------------------------------------
+$
+
+enable secret SRMS-5813
+
+service password-encryption
+
+vlan 10
+name EJECUTIVO
+
+vlan 20
+name RH
+
+vlan 30
+name MARKETING
+exit
+
+vlan 40
+name FINANZAS
+exit
+
+vlan 50
+name DC
+exit
+
+
+int range f0/6 -15
+switchport mode access
+switchport access vlan 30
+
+int range f0/16 -24
+switchport mode access
+switchport access vlan 10
+
+int g0/2
+switchport mode trunk
+switchport trunk native vlan 666
+exit
+
+do wr
+
+
+*********************
+* Switch 1 - Matriz *
+*********************
+
+enable
+config t
+
+hostname Mat_S1
+
+banner motd $
+---------------------------------------
+NO INGRESE SIN AUTORIZACION
+---------------------------------------
+$
+
+enable secret SRMS-5813
+
+service password-encryption
+
+vlan 10
+name EJECUTIVO
+
+vlan 20
+name RH
+
+vlan 30
+name MARKETING
+exit
+
+vlan 40
+name FINANZAS
+exit
+
+vlan 50
+name DC
+exit
+
+int range f0/6 -15
+switchport mode access
+switchport access vlan 30
+
+int range f0/16 -24
+switchport mode access
+switchport access vlan 10
+
+int range g0/2, f0/1
+switchport mode trunk
+switchport trunk native vlan 666
+exit
+
+do wr
+
+
+
+*********************
+* Switch 2 - Matriz *
+*********************
+
+enable
+config t
+
+hostname Mat_S2
+
+banner motd $
+---------------------------------------
+NO INGRESE SIN AUTORIZACION
+---------------------------------------
+$
+
+enable secret SRMS-5813
+
+service password-encryption
+
+vlan 10
+name EJECUTIVO
+
+vlan 20
+name RH
+
+vlan 30
+name MARKETING
+exit
+
+vlan 40
+name FINANZAS
+exit
+
+vlan 50
+name DC
+exit
+
+int range f0/6 -15
+switchport mode access
+switchport access vlan 20
+
+int range f0/16 -24
+switchport mode access
+switchport access vlan 40
+
+int f0/1
+switchport mode trunk
+switchport trunk native vlan 666
+exit
+
+do wr
+
+
+*********************
+* Switch 3 - Matriz *
+*********************
+
+enable
+config t
+
+hostname Mat_S3
+
+banner motd $
+---------------------------------------
+NO INGRESE SIN AUTORIZACION
+---------------------------------------
+$
+
+enable secret SRMS-5813
+
+service password-encryption
+
+vlan 10
+name EJECUTIVO
+
+vlan 20
+name RH
+
+vlan 30
+name MARKETING
+exit
+
+vlan 40
+name FINANZAS
+exit
+
+vlan 50
+name DC
+exit
+
+int range f0/6 -15
+switchport mode access
+switchport access vlan 50
+
+int f0/1
+switchport mode trunk
+switchport trunk native vlan 666
+exit
+
+do wr

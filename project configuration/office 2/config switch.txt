@@ -1,0 +1,101 @@
+*************************
+* Switch 2 - Sucursal 2 *
+*************************
+
+enable
+config t
+
+hostname Des_S2
+
+banner motd $
+---------------------------------------
+NO INGRESE SIN AUTORIZACION
+---------------------------------------
+$
+
+enable secret SRMS-5813
+
+service password-encryption
+
+vlan 210
+name WEB_DEV
+
+vlan 220
+name MOB_DEV
+
+vlan 230
+name GAM_DEV
+exit
+
+int range f0/6 -12
+switchport mode access
+switchport access vlan 210
+
+int range f0/13 -18
+switchport mode access
+switchport access vlan 220
+
+int range f0/19 -24
+switchport mode access
+switchport access vlan 230
+
+int g0/2
+switchport mode trunk
+switchport trunk native vlan 666
+exit
+
+do wr
+
+
+
+*************************
+* Switch 1 - Sucursal 2 *
+*************************
+
+enable
+config t
+
+hostname Des_S1
+
+banner motd $
+---------------------------------------
+NO INGRESE SIN AUTORIZACION
+---------------------------------------
+$
+
+enable secret SRMS-5813
+
+service password-encryption
+
+vlan 210
+name WEB_DEV
+
+vlan 220
+name MOB_DEV
+
+vlan 230
+name GAM_DEV
+exit
+
+int range f0/6 -12
+switchport mode access
+switchport access vlan 210
+
+int range f0/13 -18
+switchport mode access
+switchport access vlan 220
+
+int range f0/19 -24
+switchport mode access
+switchport access vlan 230
+
+int g0/2
+switchport mode trunk
+switchport trunk native vlan 666
+
+int g0/1
+switchport mode trunk
+switchport trunk native vlan 666
+exit
+
+do wr

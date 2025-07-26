@@ -1,0 +1,80 @@
+***********************
+* Switch ML1 - Matriz *
+***********************
+
+enable
+config t
+
+hostname Mat_SML1
+
+
+banner motd $
+---------------------------------------
+NO INGRESE SIN AUTORIZACION
+---------------------------------------
+$
+
+enable secret SRMS-5813
+
+service password-encryption
+
+int g0/1
+no switchport
+ip add 192.168.10.177 255.255.255.252
+no shut
+exit
+
+
+vlan 10
+name EJECUTIVO
+
+vlan 30
+name MARKETING
+
+vlan 20
+name RH
+
+vlan 40
+name FINANZAS
+
+vlan 50
+name DC
+
+int vlan 10
+ip add 192.168.10.65 255.255.255.224
+ip helper-address 192.168.10.178
+no shut
+
+int vlan 20
+ip add 192.168.10.97 255.255.255.224
+ip helper-address 192.168.10.178
+no shut
+
+int vlan 30
+ip add 192.168.10.1 255.255.255.192
+ip helper-address 192.168.10.178
+no shut
+
+int vlan 40
+ip add 192.168.10.129 255.255.255.224
+ip helper-address 192.168.10.178
+no shut
+
+int vlan 50
+ip add 192.168.10.161 255.255.255.240
+ip helper-address 192.168.10.178
+no shut
+
+ip routing
+
+int range f0/6 -8
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk native vlan 666
+no shut
+exit
+
+ip route 0.0.0.0 0.0.0.0 192.168.10.178
+
+do wr
+
